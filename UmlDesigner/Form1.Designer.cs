@@ -55,21 +55,22 @@
             // 
             this.start1.BackColor = System.Drawing.Color.Transparent;
             this.start1.IsSelected = false;
-            this.start1.Location = new System.Drawing.Point(59, 44);
+            this.start1.Location = new System.Drawing.Point(84, 63);
             this.start1.Name = "start1";
             this.start1.Size = new System.Drawing.Size(100, 50);
-            this.start1.TabIndex = 2;
+            this.start1.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 267);
-            this.Controls.Add(this.end1);
             this.Controls.Add(this.start1);
+            this.Controls.Add(this.end1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
@@ -77,8 +78,8 @@
 
         #endregion
         private System.Windows.Forms.Button button1;
-        private Components.Start start1;
         private Components.End end1;
+        private Components.Start start1;
     }
 }
 
