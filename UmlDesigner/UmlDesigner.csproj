@@ -71,6 +71,9 @@
     <Compile Include="Components\End.Designer.cs">
       <DependentUpon>End.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\MainUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Components\Start.cs">
       <SubType>UserControl</SubType>
     </Compile>
