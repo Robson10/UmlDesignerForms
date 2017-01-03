@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+//Resize control :https://www.experts-exchange.com/articles/4274/A-simple-trick-to-resize-a-control-at-runtime.html
 namespace UmlDesigner.Components
 {
 
@@ -16,6 +17,7 @@ namespace UmlDesigner.Components
             set
             {
                 _isSelected = value;
+                UpdateRubberVisible();
                 Invalidate();
             }
         }
@@ -53,7 +55,7 @@ namespace UmlDesigner.Components
             Rubbers[6].Cursor = Cursors.SizeNESW;
             Rubbers[7].Cursor = Cursors.SizeWE;
         }
-        protected Point MouseDownLocation_Rubbers;
+        private Point MouseDownLocation_Rubbers;
         /// <summary>
         /// Metoda służąca do zapisania miejsca wcisniecia LPM na 1z8 picturebox'ow nazywanych gumkami
         /// </summary>
@@ -86,7 +88,7 @@ namespace UmlDesigner.Components
                 Invalidate();
             }
         }
-        protected Point MouseDownLocation;
+        private Point MouseDownLocation;
         /// <summary>
         /// Metoda zapisująca miejsce wciśnięcia lewego glawisza myszy na kontrolce z wyłączeniem gumek posiadającymi włąsny event
         /// </summary>
@@ -151,6 +153,31 @@ namespace UmlDesigner.Components
             Rubbers[6].Location = bottomLeft;
             Rubbers[7].Location = centerLeft;
             Invalidate();
+        }
+
+        /// <summary>
+        /// Metoda wywoływana przez event OnPaint w celu wyliczenia odpowiedniego rozmiaru czcionki dla tekstu aby ten miescił sie w Kontrolce
+        /// </summary>
+        /// <param name="font"></param>
+        /// <param name="stringSize"></param>
+        /// <param name="e"></param>
+        protected void FindSuitableFontAndFontSizeForText(out Font font, out Size stringSize, PaintEventArgs e,string text)
+        {
+            int fontSize = (int)Math.Ceiling(Height / 3.0) + 1;
+            do
+            {
+                fontSize--;
+                font = new Font(FontFamily.GenericSansSerif, fontSize, FontStyle.Bold);
+                stringSize = e.Graphics.MeasureString(text, font).ToSize();
+            } while (stringSize.Width > Width && fontSize > 1);
+        }
+        /// <summary>
+        /// Metoda aktualizująca widoczność gumek
+        /// </summary>
+        protected void UpdateRubberVisible()
+        {
+            for (int i = 0; i < Rubbers.Length; i += 2)
+                Rubbers[i].Visible = IsSelected;
         }
     }
 }
