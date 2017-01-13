@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\UndoRedo.cs" />
     <Compile Include="Components\Dictionary.cs" />
     <Compile Include="Components\End.cs">
       <SubType>UserControl</SubType>

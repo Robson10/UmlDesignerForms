@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 //Resize control :https://www.experts-exchange.com/articles/4274/A-simple-trick-to-resize-a-control-at-runtime.html
@@ -88,6 +89,8 @@ namespace UmlDesigner.Components
                 Invalidate();
             }
         }
+       
+
         private Point MouseDownLocation;
         /// <summary>
         /// Metoda zapisująca miejsce wciśnięcia lewego glawisza myszy na kontrolce z wyłączeniem gumek posiadającymi włąsny event
@@ -112,24 +115,18 @@ namespace UmlDesigner.Components
                 Top = e.Y + Top - MouseDownLocation.Y;
             }
         }
-        /// <summary>
-        /// Zdarzenie włączające zaznaczenie kontrolki oraz wywołujące jej ponowne rysowanie;
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnMouseClick(MouseEventArgs e)
-        {
-            IsSelected = !IsSelected;
-            Invalidate();
-        }
-
+        
         /// <summary>
         /// Event reagujący na zmianę rozmiaru kontrolki, wywołuje on metode aktualizującą położenie gumek
         /// </summary>
         /// <param name="e"></param>
         protected override void OnResize(EventArgs e)
         {
+            CutTheShape();
             UpdateRubbersLocation();
+
         }
+
         /// <summary>
         /// Metoda aktualizująca położenie gumek wywoływana przez event OnResize();
         /// </summary>
@@ -176,8 +173,17 @@ namespace UmlDesigner.Components
         /// </summary>
         protected void UpdateRubberVisible()
         {
-            for (int i = 0; i < Rubbers.Length; i += 2)
+            for (int i = 0; i < Rubbers.Length; i++)
                 Rubbers[i].Visible = IsSelected;
+        }
+        /// <summary>
+        /// Metoda służąca do odcięcia obszaru na zewnątrz docelowego kształtu komponentu- Przezroczystość
+        /// </summary>
+        protected void CutTheShape()
+        {
+            GraphicsPath GrPath = new GraphicsPath();
+            GrPath.AddEllipse(1, 1, ClientSize.Width - 2, ClientSize.Height - 3);
+            Region = new System.Drawing.Region(GrPath);
         }
     }
 }
