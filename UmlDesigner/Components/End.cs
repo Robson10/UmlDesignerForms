@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace UmlDesigner.Components
@@ -10,6 +11,7 @@ namespace UmlDesigner.Components
             InitializeComponent();
             ComponentPresets();
             RubbersPresets();
+            CutTheShape();
             Invalidate();
         }
         /// <summary>
@@ -26,6 +28,11 @@ namespace UmlDesigner.Components
             FindSuitableFontAndFontSizeForText(out font, out stringSize, e, StartEndDictionary.TextEnd);
             e.Graphics.DrawString(StartEndDictionary.TextEnd, font, new SolidBrush(Color.Black), (Width - stringSize.Width) / 2, Height / 2 - stringSize.Height / 2);
             e.Graphics.FillEllipse(new SolidBrush(Color.YellowGreen), Width / 2 - 4, Height - 8, 8, 8);
+        }
+        protected override void OnResize(EventArgs e)
+        {
+            CutTheShape();
+            UpdateRubbersLocation();
         }
     }
 }

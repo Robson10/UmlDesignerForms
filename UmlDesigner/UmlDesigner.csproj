@@ -65,18 +65,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\UndoRedo.cs" />
+    <Compile Include="Components\Decision.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\Dictionary.cs" />
     <Compile Include="Components\End.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\End.Designer.cs">
       <DependentUpon>End.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\MainUserControl.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Start.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Start.Designer.cs">
       <DependentUpon>Start.cs</DependentUpon>
