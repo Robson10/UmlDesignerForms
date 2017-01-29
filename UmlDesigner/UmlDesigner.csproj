@@ -65,24 +65,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\UndoRedo.cs" />
-    <Compile Include="Components\Decision.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Components\Block_Decision.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Dictionary.cs" />
-    <Compile Include="Components\End.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Components\Block_End.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\End.Designer.cs">
-      <DependentUpon>End.cs</DependentUpon>
+    <Compile Include="Components\Block_End.Designer.cs">
+      <DependentUpon>Block_End.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\MainUserControl.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Components\Block_Execution.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Start.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Components\Block_Input.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Start.Designer.cs">
-      <DependentUpon>Start.cs</DependentUpon>
+    <Compile Include="Components\Block_Template.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Block_Start.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Block_Start.Designer.cs">
+      <DependentUpon>Block_Start.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -92,8 +98,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Components\Start.resx">
-      <DependentUpon>Start.cs</DependentUpon>
+    <EmbeddedResource Include="Components\Block_Start.resx">
+      <DependentUpon>Block_Start.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

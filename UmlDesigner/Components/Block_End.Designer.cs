@@ -1,6 +1,6 @@
 ﻿namespace UmlDesigner.Components
 {
-    partial class End
+    partial class Block_End
     {
         /// <summary> 
         /// Required designer variable.
